@@ -1,0 +1,22 @@
+<table class="table table-success">
+    <thead>
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Sobrenome</th>
+            <th scope="col">Email</th>
+            <th scope="col">Education</th>
+            <th scope="col">Data de Nascimento</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="listUsers">
+        <tr *ngFor="let user of listUsers.result">
+            <td>{{user.name}}</td>
+            <td>{{user.surname}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.education}}</td>
+            <td>{{user.birthDate}}</td>
+            <td><button class="btn btn-danger" (click)="deleteUser(user.id);">Remover</button> ou <button class="btn btn-primary" [routerLink]="['/inserir']" [queryParams]="{id: user.id}">Alterar</button></td>
+        </tr>
+    </tbody>
+</table>

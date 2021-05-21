@@ -1,0 +1,43 @@
+<form [formGroup]="form">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputname">Nome *</label>
+            <input type="text" class="form-control" formControlName="name" id="inputname" placeholder="Nome" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputsurname">Sobrenome *</label>
+            <input type="surname" class="form-control" formControlName="surname" id="inputsurname"
+                placeholder="Sobrenome">
+        </div>
+    </div>
+    <div class="form-group col-md-6">
+        <label for="inputEmail">E-mail *</label>
+        <input type="email" class="form-control" formControlName="email" id="inputEmail" placeholder="Email">
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputEducation">Escolaridade *</label>
+            <select id="inputEducation" class="form-control" formControlName="educationId">
+                <option *ngFor="let education of listEducations" selected value="{{education.id}}">{{education.description}}</option>
+            </select>
+        </div>
+        <div class="form-group col-md-2">
+            <label for="birthDate">Data de Nascimento *</label> <br>
+            <input type="date"  placeholder="dd-MM-yyyy" formControlName="birthDate">
+        </div>
+    </div>
+    <br>
+    <div class="form-group col-md-2">
+        <label for="birthDate">Campos com * são obrigatórios!</label> 
+    </div>
+    <br>
+    <button type="submit" class="btn btn-success" (click)="this.processInfo()">Inserir Usuário</button>
+    <div *ngFor="let notification of notifications">
+        <div *ngIf="notification.type == 1" class="alert alert-danger">
+            {{notification.message}}
+        </div>
+        <div *ngIf="notification.type == 2" class="alert alert-success">
+            {{notification.message}}
+        </div>
+    </div>
+</form>
